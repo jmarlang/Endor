@@ -1,0 +1,231 @@
+/********************************************************************************/
+/* Pour les commandes accessibles par touches en bloc horizontal dans le header */
+/********************************************************************************/
+ul {
+	padding: 0; margin: 0;
+	text-align: center; /* centrer le texte */
+	width : auto;
+	display : block;
+	margin : auto;
+  }
+li {
+ /*margin-left:2px;*/
+ display: inline;
+ list-style: none;/*
+ float:left; /*pour IE*/
+ }
+ul li a {
+	display:inline-block;	/* Pour afficher les boutons en ligne et centrés */
+	margin: 0 30px;	/* Pas de séparation entre les items avec 'auto', sinon mettre 0 30px (par exemple) */
+	float:left;   
+	width:200px;
+	height: 35px;
+	background-color:#6495ED;
+	color:black;
+	font: 17px "Trebuchet MS",Arial,sans-serif ;
+	font-family: fantasy;
+
+/*	text-decoration: underline overline #FF3028;*/
+	line-height: 32px ;
+	text-align:center;
+	padding:5px;
+	border:2px solid;
+	/*pour avoir un effet "relief" avec IE :*/
+	border-color:#DCDCDC #696969 #696969 #DCDCDC;
+ }
+ul li a:hover {
+ background-color:#D3D3D3;
+ border-color:#696969 #DCDCDC #DCDCDC #696969;
+ } 
+/********************************************************************************/
+/* Pour les commandes accessibles par touches en bloc vertical */
+/********************************************************************************/
+ #menu {
+ 	vertical-align: auto;
+ 	width: auto;
+  	list-style: none;
+  	margin: 0;
+  	padding: 0;
+}
+
+#menu li {
+  background: #c00 ;
+  color: #fff ;
+  margin-bottom: 1px ;
+}
+
+#menu li a {
+  display: block ;
+  background: #c00 ;
+  color: #fff ;
+  font: 17px "Trebuchet MS",Arial,sans-serif ;
+  font-family: fantasy;
+  line-height: 32px ;
+  text-align: center ;
+  text-decoration: none ;
+  padding: 4px 0 ;
+}
+
+#menu li a:hover, #navigation li a:focus, #navigation li a:active {
+  background: #900 ;
+  text-decoration: auto ;
+}
+
+.absolute {	/* Position en haut à gauche */
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 300px;
+  height: 200px;
+}
+.relativeHi {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+.relativeLo {
+  position: relative;
+  bottom: : 0px;
+  left: 0px;
+}
+.signature {	/* Pour positionner la signature en bas à droite d'un écran */
+	color:white;
+    position:fixed;
+    bottom:10px;
+    right:10px;
+}
+
+.blocktext {	/* Pour centrer un bloc de texte en imposant une largeur de 10em */
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px
+}
+
+.blockdroite {	/* Pour centrer un bloc de texte en imposant une largeur de 10em */
+    margin-left: 75%;
+    margin-right: auto;
+    width: 20em
+}
+
+.blockgauche {	/* Pour centrer un bloc de texte en imposant une largeur de 10em */
+    margin-left: auto;
+    margin-right: 75%;
+    width: 20em
+}
+
+.container {
+	width: 1200px;
+}
+.container div {
+	display: inline-block;
+	width: 300px;
+}
+
+body {	/* Définit une image de fond utilisable pour tous les écrans */
+    background:url('images/Hieronymus_Bosch.jpg');
+    background-size:cover;
+    margin:0;
+}
+
+.heads
+{
+    color: red;
+    font-weight:bold;
+}
+p
+{
+    color: white;
+    font-size: 19px;
+}
+q {
+	color: green;
+}
+h1,em
+{
+    color: lime;
+    font-weight:bold;
+}
+strong
+{
+	color: white;
+	font-weight:bold;
+	font-style:italic;
+	font-size: 28px;
+
+}
+
+.gras {
+	color:blue;
+	font-weight:italic;
+}
+
+.imag {
+    width: 800px;
+    height: 600px;
+}
+.centr_visible
+{
+	text-align:center;
+	color:blue;
+	font-weight:bold;
+	font-size: 14px;
+}
+
+/* CSS */
+/* #image-index {
+ width: 300px;
+ height: 300px;
+ background: #64ACD1;
+ margin-right: auto;
+ margin-left: auto;
+ border: 0px solid #CCC;
+}*/
+
+@keyframes AutoSlide {
+	0%, 15%, 100% {
+		left: 0px; /*1ère image*/
+	}
+	35%, 70% {
+		left: -800px; /*2ème image*/
+	}
+	70%, 85% {
+		left: -1600px; /*3ème image*/	
+	}
+}
+
+#slideshow {/* Taille de la fenêtre d'affichage des diapos */
+	position: relative;
+	width: 800px;	/* !!!!! ATTENTION LES IMAGES DES DIAPOS DOIVENT FAIRE 400px DE LARGE ET 300 DE HAUT */
+	height: 600px;
+	margin:  40px auto;	/* Positionne la diapo dans l'écran */
+	overflow: hidden;
+}
+#sContent li {
+	display: inline;
+}
+#sContent { /* Puis les styles concernant l'élément qui défile dans son conteneur */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2400px;	/* SOIT 3 FOIS LA LARGEUR DES DIAPOS */
+	height: 600px;
+	margin: 0;            
+	padding: 0;
+	
+	/*CSS3 keyframes animation*/
+	animation-name: AutoSlide;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+#sCont li {	/* Pour que l'affichage ci-dessous se fasse en ligne et non en colonne */
+	display: inline;
+}#sCont { /* Puis les styles pour les photos acteur */
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 1024px;	/* SOIT 4 FOIS LA LARGEUR DES photos */
+ 	height: 256px;	/* Pour laisser la place à l'affichage des noms dessous */
+	margin: 0;            
+	padding: 0;
+}

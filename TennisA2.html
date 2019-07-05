@@ -1,0 +1,138 @@
+<html>
+<head>
+  <script src="jquery.js"></script>
+  <style>
+  svg { border:1px solid black; }
+  #bar { fill:black; stroke:none; }
+  h1 { display:none; }
+  </style>
+
+  <script>
+
+  W = 0
+  H = 0
+  BW = 10  
+  BH = 150
+  R = 10
+
+  vx = 5
+  vy = 5
+
+  nbrebond=0	// Il faut 10 rebonds pour gagner
+ // chaine="vous avez tenu"+" ??    rebonds !"
+
+  function step() {
+    x = parseInt($("#ball").attr("cx"))
+    y = parseInt($("#ball").attr("cy"))
+    x += vx
+    y += vy
+
+    if(x>=W-R && y-R/2>=barDy && y+R/2<=barDy+BH) rebond_bar((y+R/2-barDy)/(BH+R)) // Rebond barre de droite
+    else if(x<=R+BW && y-R/2>=bary && y+R/2<=bary+BH)  // Si la balle arrive sur la barre de gauche
+  	{
+  		rebond_bar((y+R/2-bary)/(BH+R)) // Rebond barre
+  		nbrebond+=1;
+      chaine="Vous avez tenu "+nbrebond+" rebonds !!"
+      if (nbrebond>1) $("#msg").text(chaine).show()
+  	}
+    else if((y<=R && vy<0) || (y>=H-R && vy>0)) rebond_v() // Rebond haut et bas
+    else if (x<=R || x>=W-R) perdu(x) // La balle est passée sans la raquette : c'est Fini
+
+    if(nbrebond==10) gagne()
+    $("#ball").attr("cx", x).attr("cy", y)
+  }
+
+  function rebond_v() { vy = -vy }
+  function rebond_h() { vx = -vx }
+  function rebond_bar(angle) {
+    vy = 10*(angle - 0.5)+nbrebond
+    vx = -vx+(nbrebond/2)
+  }
+
+  function perdu(dg) {
+    clearInterval(_i)
+    if((dg<=R) && (nbrebond!=0)){chaine="Joueur GAUCHE "}else{chaine="Joueur DROITE "}
+    chaine=chaine+"C'est PERDU ! Vous n'avez tenu que "+nbrebond
+    if(nbrebond<2) {chaine=chaine+" échange !!"}  else {chaine=chaine+" échanges !!!"}
+    if(nbrebond==0) {chaine="Joueur à DROITE touche 'p' pour monter touche 'l' pour descendre Joueur à GAUCHE touche 'a' pour monter touche 's' pour descendre. Toucher la barre ESPACE (' ') pour relancer la partie"}
+    $("#msg").text(chaine).show()
+  }
+
+  function gagne() {
+    clearInterval(_i)
+    $("#msg").text("Bravo vous avez tenu 10 échanges : GAGNE !").show()
+  }
+
+
+  bary=0
+  barDy=450
+  $(function() {
+    svg = $("svg")
+
+    $(window).keyup((e) => {
+      if(e.key == ' ') location.reload()
+    })
+
+
+    $(window).keydown((e) => {
+      if(e.key == 's')     //$("#msg").text("Qui Presse le 'l' ?? !").show()
+      {
+        bary+=20
+        if(bary>=H-BH) bary = H-BH
+        $("#bar").attr("y", bary)
+      }
+      else if (e.key == 'a')     //$("#msg").text("Qui Presse le 'p' ?? !").show()
+      {
+        bary-=20
+        if(bary<=0) bary = 0
+        $("#bar").attr("y", bary)
+      }
+      else if(e.key == 'l')     //$("#msg").text("Qui Presse le 'l' ?? !").show()
+      {
+        barDy+=20
+        if(barDy>=H-BH) barDy = H-BH
+        $("#barD").attr("y", barDy)
+      }
+      else if (e.key == 'p')     //$("#msg").text("Qui Presse le 'p' ?? !").show()
+      {
+        barDy-=20
+        if(barDy<=0) barDy = 0
+        $("#barD").attr("y", barDy)
+      }
+    })
+
+
+    $("#bar").attr("width", BW).attr("height", BH)
+    $("#barD").attr("width", BW).attr("height", BH)
+
+    $("#ball").attr("r", R)
+    W = $("svg").width()
+    H = $("svg").height()
+
+    _i = setInterval(step, 9)
+  })
+
+  </script>
+</head>
+<body>
+<!-- <img src="images/tribunes.png" alt="RG" /> -->
+<center>
+  <svg width=1200 height=600px>
+    <rect id="terrain" x=0 y=0 width=1200 height=600 fill="orange" stroke="blue" ></rect>
+    <rect id="bar" x=0 y=0 width=40 height=10 fill="red" ></rect>
+    <rect id="barD" x=1190 y=450 width=40 height=10 fill="red" ></rect>
+    <circle id="ball" cx=400 cy=300 r=20 fill="yellow"></circle>
+    <rect id="ligne1" x=300 y=300 width=600 height=5 fill="white" stroke="blue"></rect>
+    <rect id="ligne2" x=300 y=0 width=5 height=600 fill="white" stroke="blue" ></rect>
+    <rect id="ligne2" x=600 y=0 width=5 height=600 fill="red" stroke="blue" ></rect>
+    <rect id="ligne2" x=900 y=0 width=5 height=600 fill="white" stroke="blue" ></rect>
+    <rect id="ligne3" x=0 y=0 width=1200 height=5 fill="white" stroke="blue" ></rect>
+    <rect id="ligne4" x=0 y=0 width=5 height=600 fill="white" stroke="blue" ></rect>
+    <rect id="ligne5" x=0 y=595 width=1200 height=5 fill="white" stroke="blue" ></rect>
+    <rect id="ligne5" x=1195 y=0 width=5 height=600 fill="white" stroke="blue" ></rect>
+  </svg>
+</center>
+<h1 id="msg"></h1>
+<p class="signature" ; style="font-size: 12px;"><right>Réalisation des codes HTML/CSS et du design par Jmarlang</right></p>
+</body>
+</html>
