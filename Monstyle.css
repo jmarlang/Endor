@@ -10,21 +10,22 @@ ul {
   }
 li {
  /*margin-left:2px;*/
- display: inline;
- list-style: none;/*
+ 	display: inline;
+ 	list-style: none;/*
  float:left; /*pour IE*/
  }
 ul li a {
 	display:inline-block;	/* Pour afficher les boutons en ligne et centrés */
-	margin: 0 30px;	/* Pas de séparation entre les items avec 'auto', sinon mettre 0 30px (par exemple) */
+	margin: 0;	/* Pas de séparation entre les items avec 'auto', sinon mettre 0 30px (par exemple) */
 	float:left;   
-	width:200px;
-	height: 35px;
+	width:19%;
+	height: 38px;
 	background-color:#6495ED;
 	color:black;
-	font: 17px "Trebuchet MS",Arial,sans-serif ;
+	font-weight: bold;
+	font: 28px "Arial Narrow",serif ;
 	font-family: fantasy;
-
+  	font-size : 17px;
 /*	text-decoration: underline overline #FF3028;*/
 	line-height: 32px ;
 	text-align:center;
@@ -42,7 +43,7 @@ ul li a:hover {
 /********************************************************************************/
  #menu {
  	vertical-align: auto;
- 	width: auto;
+ 	width: 20%;
   	list-style: none;
   	margin: 0;
   	padding: 0;
@@ -62,13 +63,13 @@ ul li a:hover {
   font-family: fantasy;
   line-height: 32px ;
   text-align: center ;
-  text-decoration: none ;
+  text-decoration:  underline overline navy ;
   padding: 4px 0 ;
 }
 
 #menu li a:hover, #navigation li a:focus, #navigation li a:active {
   background: #900 ;
-  text-decoration: auto ;
+  text-decoration: underline overline navy  ;
 }
 
 .absolute {	/* Position en haut à gauche */
@@ -101,16 +102,16 @@ ul li a:hover {
     width: 1200px
 }
 
-.blockdroite {	/* Pour centrer un bloc de texte en imposant une largeur de 10em */
+.blockdroite {	/* Pour centrer un bloc de texte en imposant une largeur de 10px */
     margin-left: 75%;
     margin-right: auto;
-    width: 20em
+    width: 20px
 }
 
-.blockgauche {	/* Pour centrer un bloc de texte en imposant une largeur de 10em */
+.blockgauche {	/* Pour centrer un bloc de texte en imposant une largeur de 10px */
     margin-left: auto;
     margin-right: 75%;
-    width: 20em
+    width: 20px
 }
 
 .container {
