@@ -18,7 +18,7 @@ ul li a {
 	display:inline-block;	/* Pour afficher les boutons en ligne et centrés */
 	margin: 0;	/* Pas de séparation entre les items avec 'auto', sinon mettre 0 30px (par exemple) */
 	float:left;   
-	width:19%;
+	width:19% ;
 	height: 38px;
 	background-color:#6495ED;
 	color:black;
